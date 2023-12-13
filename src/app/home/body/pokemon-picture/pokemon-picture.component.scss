@@ -1,0 +1,14 @@
+#pictureContainer {
+  border: 4px solid #8cbbf1;
+  max-width: 500px;
+  aspect-ratio: 1;
+  outline: 8px solid #f8e55c;
+  border-radius: 16px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #f5f7f9,
+    #f5f7f9 12px,
+    #c9e2f4 12px,
+    #c9e2f4 24px
+  );
+}
