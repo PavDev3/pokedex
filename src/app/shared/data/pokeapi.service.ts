@@ -36,7 +36,7 @@ export class PokeApiService {
 
   private fetchPokemonList() {
     return this.http
-      .get<PokeApiData>(`https://pokeapi.co/api/v2/pokemon?limit=20`)
+      .get<PokeApiData>(`https://pokeapi.co/api/v2/pokemon?limit=151`)
       .pipe(
         catchError((err) => {
           console.error('Error fetching Pokemon list:', err);
