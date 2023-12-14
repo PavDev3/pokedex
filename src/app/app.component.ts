@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { BodyComponent } from './home/body/body.component';
 import { HeaderComponent } from './home/header/header.component';
+import { PokeApiService } from './shared/data/pokeapi.service';
 
 @Component({
   selector: 'app-root',
@@ -15,4 +16,6 @@ import { HeaderComponent } from './home/header/header.component';
   styleUrl: './app.component.scss',
   imports: [CommonModule, RouterOutlet, HeaderComponent, BodyComponent],
 })
-export class AppComponent {}
+export class AppComponent {
+  pokeapi = inject(PokeApiService);
+}
