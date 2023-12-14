@@ -2,7 +2,7 @@ export interface PokeApi {
   data: PokeApiData;
 }
 
-interface PokeApiData {
+export interface PokeApiData {
   count: number;
   next: string;
   previous: string;

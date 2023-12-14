@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { EMPTY, catchError, map } from 'rxjs';
-import { PokeApi, PokemonResults } from '../interface/pokeapi';
+import { EMPTY, catchError, map, tap } from 'rxjs';
+import { PokeApiData, PokemonResults } from '../interface/pokeapi';
 
 interface PokemonState {
   pokemonList: PokemonResults[];
@@ -35,9 +35,15 @@ export class PokeApiService {
   }
 
   private fetchPokemonList() {
-    return this.http.get<PokeApi>(`https://pokeapi.co/api/v2/pokemon/`).pipe(
-      catchError((err) => EMPTY),
-      map((response) => response.data.results)
-    );
+    return this.http
+      .get<PokeApiData>(`https://pokeapi.co/api/v2/pokemon?limit=20`)
+      .pipe(
+        catchError((err) => {
+          console.error('Error fetching Pokemon list:', err);
+          return EMPTY;
+        }),
+        tap((response) => console.log('API Response:', response)),
+        map((response) => response.results)
+      );
   }
 }
