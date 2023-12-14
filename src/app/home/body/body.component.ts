@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { PokeApiService } from '../../shared/data/pokeapi.service';
 import { PokemonCardComponent } from './pokemon-card/pokemon-card.component';
 import { PokemonPictureComponent } from './pokemon-picture/pokemon-picture.component';
 
@@ -10,18 +11,11 @@ import { PokemonPictureComponent } from './pokemon-picture/pokemon-picture.compo
   template: ` <main id="container">
     <app-pokemon-picture></app-pokemon-picture>
     <div id="cardContainer">
-      <app-pokemon-card></app-pokemon-card>
-      <app-pokemon-card></app-pokemon-card>
-      <app-pokemon-card></app-pokemon-card>
-      <app-pokemon-card></app-pokemon-card>
-      <app-pokemon-card></app-pokemon-card>
-      <app-pokemon-card></app-pokemon-card>
-      <app-pokemon-card></app-pokemon-card>
-      <app-pokemon-card></app-pokemon-card>
-      <app-pokemon-card></app-pokemon-card>
-      <app-pokemon-card></app-pokemon-card>
+      <app-pokemon-card [pokemonList]="pokeApiService.pokemonList()" />
     </div>
     >
   </main>`,
 })
-export class BodyComponent {}
+export class BodyComponent {
+  pokeApiService = inject(PokeApiService);
+}

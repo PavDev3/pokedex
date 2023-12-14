@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
         <h1>Pokédex</h1>
         <img src="./../assets/img/pokeball.svg" />
       </div>
-      <a href="">Ver otros</a>
+      <a href="">Buscar Pokemon</a>
     </header>
   `,
 })

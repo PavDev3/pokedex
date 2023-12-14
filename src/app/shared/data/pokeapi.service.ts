@@ -2,10 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, computed, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { EMPTY, catchError, map, tap } from 'rxjs';
+import { _remoteService } from '../../../environments/environment';
 import { PokeApiData, PokemonResults } from '../interface/pokeapi';
 
-interface PokemonState {
+export interface PokemonState {
   pokemonList: PokemonResults[];
+  error: string | null;
+  loading: boolean;
+  lastKnowPokemon: string | null;
 }
 
 @Injectable({
@@ -17,13 +21,26 @@ export class PokeApiService {
   //State
   private state = signal<PokemonState>({
     pokemonList: [],
+    error: null,
+    loading: true,
+    lastKnowPokemon: null,
   });
 
   //Selectors
   pokemonList = computed(() => this.state().pokemonList);
+  error = computed(() => this.state().error);
+  loading = computed(() => this.state().loading);
+  lastKnowPokemon = computed(() => this.state().lastKnowPokemon);
 
   //Sources
+
+  //   private pokemonChanged$ = this.pokemonFormControl.valueChanges.pipe(
+  //     debounceTime(500),
+  //     distinctUntilChanged(),
+  //     map((pokemon) => (pokemon.length ? pokemon : 'pokemon')),
+  //   );
   private pokemonLoaded$ = this.fetchPokemonList();
+
   constructor() {
     // Reducers
     this.pokemonLoaded$.pipe(takeUntilDestroyed()).subscribe((pokemonList) => {
@@ -31,19 +48,18 @@ export class PokeApiService {
         ...state,
         pokemonList: [...state.pokemonList, ...pokemonList],
       }));
+      console.log(this.state().pokemonList);
     });
   }
 
   private fetchPokemonList() {
-    return this.http
-      .get<PokeApiData>(`https://pokeapi.co/api/v2/pokemon?limit=151`)
-      .pipe(
-        catchError((err) => {
-          console.error('Error fetching Pokemon list:', err);
-          return EMPTY;
-        }),
-        tap((response) => console.log('API Response:', response)),
-        map((response) => response.results)
-      );
+    return this.http.get<PokeApiData>(`${_remoteService}`).pipe(
+      catchError((err) => {
+        console.error('Error fetching Pokemon list:', err);
+        return EMPTY;
+      }),
+      tap((response) => console.log('Response:', response)),
+      map((response) => response.results)
+    );
   }
 }
