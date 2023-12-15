@@ -8,8 +8,6 @@ import { PokeApiData, PokemonResults } from '../interface/pokeapi';
 export interface PokemonState {
   pokemonList: PokemonResults[];
   error: string | null;
-  loading: boolean;
-  lastKnowPokemon: string | null;
 }
 
 @Injectable({
@@ -22,15 +20,11 @@ export class PokeApiService {
   private state = signal<PokemonState>({
     pokemonList: [],
     error: null,
-    loading: true,
-    lastKnowPokemon: null,
   });
 
   //Selectors
   pokemonList = computed(() => this.state().pokemonList);
   error = computed(() => this.state().error);
-  loading = computed(() => this.state().loading);
-  lastKnowPokemon = computed(() => this.state().lastKnowPokemon);
 
   //Sources
 
