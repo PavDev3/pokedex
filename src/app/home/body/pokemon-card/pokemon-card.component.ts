@@ -10,7 +10,18 @@ import { PokemonResults } from '../../../shared/interface/pokeapi';
   templateUrl: './pokemon-card.component.html',
 })
 export class PokemonCardComponent {
-  @Input({ required: true }) pokemonList!: PokemonResults[];
-  // extraer el id del pokemon de la url
-  id: string = '0';
+  @Input({ required: true }) pokemonList?: PokemonResults[];
+
+  // Extracts the id from the url
+  extractId() {
+    this.pokemonList?.forEach((pokemon) => {
+      const url = pokemon.url;
+      const id = url.split('/')[6];
+      pokemon.url = id;
+    });
+  }
+
+  ngOnChanges() {
+    this.extractId();
+  }
 }
