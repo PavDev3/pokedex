@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { _remoteSpriteService } from '../../../../environments/environment';
 import { PokemonResults } from '../../../shared/interface/pokeapi';
 
 @Component({
@@ -18,6 +19,7 @@ export class PokemonCardComponent {
       const url = pokemon.url;
       const id = url.split('/')[6];
       pokemon.url = id;
+      pokemon.spriteUrl = `${_remoteSpriteService}${id}.png`;
     });
   }
 

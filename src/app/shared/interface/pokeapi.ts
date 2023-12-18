@@ -12,4 +12,5 @@ export interface PokeApiData {
 export interface PokemonResults {
   name: string;
   url: string;
+  spriteUrl?: string;
 }

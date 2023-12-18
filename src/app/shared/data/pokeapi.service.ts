@@ -39,6 +39,7 @@ export class PokeApiService {
       }));
       console.log(this.state().pokemonList);
     });
+    //Reducer fetchPokemonSprite
   }
 
   private fetchPokemonList() {

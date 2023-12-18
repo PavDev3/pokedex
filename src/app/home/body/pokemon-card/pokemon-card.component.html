@@ -3,7 +3,7 @@
   <!-- <img src="./../../../assets/img/flecha.png" id="arrowSelector" /> -->
   <div id="card">
     <div id="circle"></div>
-    <img src="./../../../assets/img/Pikachu.webp" />
+    <img [src]="pokemon.spriteUrl" />
     <span>No. {{ pokemon.url }} </span>
     <span>{{ pokemon.name | titlecase }}</span>
   </div>
