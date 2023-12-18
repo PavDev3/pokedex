@@ -1,21 +1,16 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { PokemonResults } from '../../../shared/interface/pokeapi';
 
 @Component({
   standalone: true,
   selector: 'app-pokemon-card',
+  imports: [CommonModule],
   styleUrls: ['./pokemon-card.component.scss'],
-  template: ` @for (pokemon of pokemonList; track $index) {
-    <div id="cardContainer">
-      <!-- <img src="./../../../assets/img/flecha.png" id="arrowSelector" /> -->
-      <div id="card">
-        <div id="circle"></div>
-        <img src="./../../../assets/img/Pikachu.webp" />
-        <span>{{ pokemon.name }}</span>
-      </div>
-    </div>
-    }`,
+  templateUrl: './pokemon-card.component.html',
 })
 export class PokemonCardComponent {
   @Input({ required: true }) pokemonList!: PokemonResults[];
+  // extraer el id del pokemon de la url
+  id: string = '0';
 }

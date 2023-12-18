@@ -28,11 +28,6 @@ export class PokeApiService {
 
   //Sources
 
-  //   private pokemonChanged$ = this.pokemonFormControl.valueChanges.pipe(
-  //     debounceTime(500),
-  //     distinctUntilChanged(),
-  //     map((pokemon) => (pokemon.length ? pokemon : 'pokemon')),
-  //   );
   private pokemonLoaded$ = this.fetchPokemonList();
 
   constructor() {
