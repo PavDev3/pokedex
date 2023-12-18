@@ -17,9 +17,11 @@ export class PokemonCardComponent {
   extractId() {
     this.pokemonList?.forEach((pokemon) => {
       const url = pokemon.url;
-      const id = url.split('/')[6];
+      const fragment = url.split('/');
+      const id = fragment[fragment.length - 2];
+      console.log(id);
       pokemon.url = id;
-      pokemon.spriteUrl = `${_remoteSpriteService}${id}.png`;
+      pokemon.spriteUrl = `${_remoteSpriteService}` + `${id}.png`;
     });
   }
 
