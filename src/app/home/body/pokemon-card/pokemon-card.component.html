@@ -1,7 +1,7 @@
 @for (pokemon of pokemonList; track $index) {
 <div id="cardContainer">
   <!-- <img src="./../../../assets/img/flecha.png" id="arrowSelector" /> -->
-  <div id="card">
+  <div id="card" (click)="onCardClick(pokemon)">
     <div id="circle"></div>
     <img [src]="pokemon.spriteUrl" />
     <span>No. {{ pokemon.url }} </span>

@@ -9,13 +9,17 @@ import { PokemonPictureComponent } from './pokemon-picture/pokemon-picture.compo
   imports: [PokemonPictureComponent, PokemonCardComponent],
   styleUrls: ['./body.component.scss'],
   template: ` <main id="container">
-    <app-pokemon-picture></app-pokemon-picture>
+    <app-pokemon-picture [spriteUrl]="selectedSpriteUrl"> </app-pokemon-picture>
     <div id="cardContainer">
       <app-pokemon-card [pokemonList]="pokeApiService.pokemonList()" />
     </div>
-    >
   </main>`,
 })
 export class BodyComponent {
+  selectedSpriteUrl: string = '';
   pokeApiService = inject(PokeApiService);
+
+  onCardClick(spriteUrl: string) {
+    this.selectedSpriteUrl = spriteUrl;
+  }
 }
