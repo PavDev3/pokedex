@@ -1,6 +1,7 @@
 #cardContainer {
   position: relative;
   display: flex;
+  padding: 2px;
   align-items: center;
   isolation: isolate;
   &.selected::before {
