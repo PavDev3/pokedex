@@ -19,7 +19,6 @@ export class PokemonCardComponent {
       const url = pokemon.url;
       const fragment = url.split('/');
       const id = fragment[fragment.length - 2];
-      console.log(id);
       pokemon.url = id;
       pokemon.spriteUrl = `${_remoteSpriteService}` + `${id}.png`;
     });
