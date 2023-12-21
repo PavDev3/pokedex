@@ -1,7 +1,15 @@
 @for (pokemon of pokemonList; track $index) {
 <div id="cardContainer">
-  <!-- <img src="./../../../assets/img/flecha.png" id="arrowSelector" /> -->
-  <div id="card" (click)="onCardClick(pokemon)">
+  <img
+    src="./../../../assets/img/flecha.png"
+    id="arrowSelector"
+    *ngIf="pokemon.name === pokemonSelected?.name"
+  />
+  <div
+    id="card"
+    (click)="onCardClick(pokemon)"
+    [ngClass]="{ selected: pokemon.name === pokemonSelected?.name }"
+  >
     <div id="circle"></div>
     <img [src]="pokemon.spriteUrl" />
     <span>No. {{ pokemon.url }} </span>

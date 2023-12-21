@@ -15,6 +15,8 @@ export class PokemonCardComponent implements OnInit {
   @Input({ required: true }) pokemonList?: PokemonResults[];
   @Output() cardClicked = new EventEmitter<string>();
 
+  pokemonSelected?: PokemonResults;
+
   ngOnInit() {
     this.extractId();
   }
@@ -30,6 +32,7 @@ export class PokemonCardComponent implements OnInit {
   }
 
   onCardClick(pokemon: PokemonResults) {
+    this.pokemonSelected = pokemon;
     this.router.navigate(['/home/', pokemon.url]);
     this.cardClicked.emit(pokemon.spriteUrl);
     console.log(pokemon.spriteUrl);
