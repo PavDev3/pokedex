@@ -15,16 +15,9 @@ export interface PokemonResults {
   spriteUrl: string;
 }
 
-export interface PokemonDetailModel {
-  base_experience: number;
-  height: number;
-  held_items: any[];
+export interface Pokemon {
   id: number;
-  is_default: boolean;
-  location_area_encounters: string;
   name: string;
-  order: number;
-  past_abilities: any[];
-  past_types: any[];
-  weight: number;
 }
+
+export type PokemonId = Omit<Pokemon, 'name'>;

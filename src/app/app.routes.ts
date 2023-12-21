@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { DetailsComponent } from './home/body/detail/detail.component';
 
 export const routes: Routes = [
   {
@@ -10,5 +11,9 @@ export const routes: Routes = [
     path: 'home',
     loadComponent: () =>
       import('./home/home.component').then((m) => m.HomeComponent),
+  },
+  {
+    path: 'home/:id',
+    component: DetailsComponent,
   },
 ];

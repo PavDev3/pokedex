@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { _remoteSpriteService } from '../../../../environments/environment';
 import { PokemonResults } from '../../../shared/interface/pokeapi';
 
@@ -30,6 +31,7 @@ export class PokemonCardComponent implements OnInit {
   }
 
   onCardClick(pokemon: PokemonResults) {
+    this.router.navigate(['/home/', pokemon.url]);
     this.cardClicked.emit(pokemon.spriteUrl);
     console.log(pokemon.spriteUrl);
   }
@@ -37,4 +39,6 @@ export class PokemonCardComponent implements OnInit {
   ngOnChanges() {
     this.extractId();
   }
+
+  constructor(private router: Router) {}
 }
