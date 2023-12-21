@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-details',
-  template: '<p>details works!</p>',
+  template: '',
 })
 export class DetailsComponent implements OnInit {
   id: string | undefined;

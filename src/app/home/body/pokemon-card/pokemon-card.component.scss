@@ -4,6 +4,7 @@
   padding: 2px;
   align-items: center;
   isolation: isolate;
+  cursor: pointer;
 }
 
 #arrowSelector {
@@ -27,7 +28,8 @@
 }
 
 #card.selected {
-  background-color: #f4d03f;
+  background-color: #f38164;
+  animation: fadeIn 0.15s ease-out;
 }
 
 #circle {
