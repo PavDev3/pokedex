@@ -19,7 +19,6 @@ export class PokemonCardComponent implements OnInit {
     this.extractId();
   }
 
-  // Extracts the id from the url
   extractId() {
     this.pokemonList?.forEach((pokemon) => {
       const url = pokemon.url;
