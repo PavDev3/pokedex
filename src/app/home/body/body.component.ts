@@ -13,7 +13,10 @@ import { PokemonPictureComponent } from './pokemon-picture/pokemon-picture.compo
       <app-pokemon-picture [spriteUrl]="selectedSpriteUrl">
       </app-pokemon-picture>
       <div id="cardContainer">
-        <app-pokemon-card [pokemonList]="pokeApiService.pokemonList()" />
+        <app-pokemon-card
+          [pokemonList]="pokeApiService.pokemonList()"
+          (cardClicked)="onCardClick($event)"
+        />
         <app-footer></app-footer>
       </div>
     </main>

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { _remoteSpriteService } from '../../../../environments/environment';
 import { PokemonResults } from '../../../shared/interface/pokeapi';
 
@@ -10,9 +10,13 @@ import { PokemonResults } from '../../../shared/interface/pokeapi';
   styleUrls: ['./pokemon-card.component.scss'],
   templateUrl: './pokemon-card.component.html',
 })
-export class PokemonCardComponent {
+export class PokemonCardComponent implements OnInit {
   @Input({ required: true }) pokemonList?: PokemonResults[];
   @Output() cardClicked = new EventEmitter<string>();
+
+  ngOnInit() {
+    this.extractId();
+  }
 
   // Extracts the id from the url
   extractId() {
@@ -27,6 +31,7 @@ export class PokemonCardComponent {
 
   onCardClick(pokemon: PokemonResults) {
     this.cardClicked.emit(pokemon.spriteUrl);
+    console.log(pokemon.spriteUrl);
   }
 
   ngOnChanges() {

@@ -27,7 +27,7 @@ export class PokeApiService {
   error = computed(() => this.state().error);
 
   //Sources
-  private pokemonLoaded$ = this.fetchPokemonList();
+  pokemonLoaded$ = this.fetchPokemonList();
 
   constructor() {
     // Reducers
@@ -36,7 +36,6 @@ export class PokeApiService {
         ...state,
         pokemonList: [...state.pokemonList, ...pokemonList],
       }));
-      console.log('Pokemon Status:');
       console.log(this.state().pokemonList);
     });
   }
