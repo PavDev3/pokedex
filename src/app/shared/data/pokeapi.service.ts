@@ -27,7 +27,6 @@ export class PokeApiService {
   error = computed(() => this.state().error);
 
   //Sources
-
   private pokemonLoaded$ = this.fetchPokemonList();
 
   constructor() {
@@ -37,6 +36,7 @@ export class PokeApiService {
         ...state,
         pokemonList: [...state.pokemonList, ...pokemonList],
       }));
+      console.log('Pokemon Status:');
       console.log(this.state().pokemonList);
     });
   }
@@ -47,7 +47,9 @@ export class PokeApiService {
         console.error('Error fetching Pokemon list:', err);
         return EMPTY;
       }),
-      tap((response) => console.log('Response:', response)),
+      tap((response) => {
+        console.log('Response:', response);
+      }),
       map((response) => response.results)
     );
   }
