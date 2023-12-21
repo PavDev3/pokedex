@@ -7,11 +7,12 @@ import { Component, Input } from '@angular/core';
   template: `
     <div id="pictureContainer">
       <div id="picture">
-        <img [src]="spriteUrl" />
+        <img [src]="spriteUrl || alternateSpriteUrl" />
       </div>
     </div>
   `,
 })
 export class PokemonPictureComponent {
-  @Input() spriteUrl?: string;
+  @Input() spriteUrl!: string; // main picture
+  @Input() alternateSpriteUrl = './../assets/img/pokeball.svg';
 }

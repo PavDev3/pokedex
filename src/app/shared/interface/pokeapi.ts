@@ -12,7 +12,7 @@ export interface PokeApiData {
 export interface PokemonResults {
   name: string;
   url: string;
-  spriteUrl?: string;
+  spriteUrl: string;
 }
 
 export interface PokemonDetailModel {
